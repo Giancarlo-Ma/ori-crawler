@@ -10,13 +10,13 @@ const scrollToBottom = require("scroll-to-bottomjs");
   const page = await browser.newPage();
   page.setDefaultTimeout(0);
 
-  let books = await getBooks(website, page, '.SearchCard--29xc9')
+  let books = await getBooks(website, page, '.SearchCard--29xc9', 1)
 
-  process.send({ data: thirdLinks })
+  process.send({ data: books })
   await browser.close();
 })()
 
-const getBooks = async (website, page, selector) => {
+const getBooks = async (website, page, selector, pageCount) => {
   await page.goto(website);
   await page.waitForSelector(selector);
   return await page.evaluate((selector) => {

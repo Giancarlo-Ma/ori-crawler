@@ -19,7 +19,7 @@ const crawlerPath = path.join(__dirname, 'task', 'crawler')
         })
         console.log(book)
         if (!book) {
-          book = new book(item)
+          book = new Book(item)
           await book.save()
         }
       })
